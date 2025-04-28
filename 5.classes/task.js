@@ -3,12 +3,11 @@ class PrintEditionItem {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-    this.state = 100;    // через сеттер
+    this.state = 100;    
     this.type = null;
   }
 
   fix() {
-    // разрушаем «служебную» обёртку и работаем с state как с обычным свойством
     this.state = this.state * 1.5;
   }
 
