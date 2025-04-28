@@ -3,21 +3,22 @@ class PrintEditionItem {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-    this._state = 100;
+    this.state = 100;    // через сеттер
     this.type = null;
   }
 
   fix() {
-    this.state = this._state * 1.5;
+    // разрушаем «служебную» обёртку и работаем с state как с обычным свойством
+    this.state = this.state * 1.5;
   }
 
-  set state(number) {
-    if (number < 0) {
+  set state(value) {
+    if (value < 0) {
       this._state = 0;
-    } else if (number > 100) {
+    } else if (value > 100) {
       this._state = 100;
     } else {
-      this._state = number;
+      this._state = value;
     }
   }
 
@@ -25,6 +26,7 @@ class PrintEditionItem {
     return this._state;
   }
 }
+
 
 class Magazine extends PrintEditionItem {
   constructor(name, releaseDate, pagesCount) {
